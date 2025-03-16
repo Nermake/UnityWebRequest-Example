@@ -1,5 +1,6 @@
 # UnityWebRequest-Example
- Test task
+
+Version - Unity 2022.3.44.f1
 
 #### Введение
 
