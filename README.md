@@ -21,4 +21,4 @@ Version - Unity 2022.3.44.f1
 
 - **MVP - Passive View**
 - **Zenject Factory**
-- **Самописный EventBus**
+- **Custom EventBus**
