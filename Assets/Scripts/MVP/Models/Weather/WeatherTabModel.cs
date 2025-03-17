@@ -11,7 +11,7 @@ using Zenject;
 
 namespace MVP.Models
 {
-    public class WeatherTabModel : IInitializable, ITickable, IDisposable, ITabModel
+    public class WeatherTabModel : ITabModel, ITickable
     {
         private readonly EventBus _eventBus;
         private readonly WeatherService _weatherService;

@@ -9,7 +9,7 @@ using EventBus = EventSystem.EventBus;
 
 namespace MVP.Models
 {
-    public class WeatherModel : IInitializable, IDisposable, IModel
+    public class WeatherModel : IModel
     {
         public event Action ModelChanged;
 

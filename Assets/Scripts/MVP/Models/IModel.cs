@@ -1,8 +1,9 @@
 using System;
+using Zenject;
 
 namespace MVP.Models
 {
-    public interface IModel
+    public interface IModel : IInitializable, IDisposable
     {
         event Action ModelChanged;
     }

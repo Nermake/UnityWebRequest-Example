@@ -11,7 +11,7 @@ using Zenject;
 
 namespace MVP.Models
 {
-    public class DogBreedTabModel : IInitializable, IDisposable, ITabModel
+    public class DogBreedTabModel : ITabModel
     {
         private readonly EventBus _eventBus;
         private readonly DogBreedService _weatherService;

@@ -5,7 +5,7 @@ using Zenject;
 
 namespace MVP.Models
 {
-    public class DogBreedModel : IInitializable, IDisposable, IModel
+    public class DogBreedModel : IModel
     {
         public event Action ModelChanged;
 

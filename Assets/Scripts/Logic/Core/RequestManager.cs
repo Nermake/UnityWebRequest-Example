@@ -9,8 +9,8 @@ namespace Logic.Core
 {
     public class RequestManager
     {
-        private readonly Queue<RequestData> requestQueue = new();
-        private UnityWebRequest currentRequest;
+        private readonly Queue<RequestData> _requestQueue = new();
+        private UnityWebRequest _currentRequest;
         
         private struct RequestData
         {
@@ -27,15 +27,15 @@ namespace Logic.Core
         public void AddRequest(UnityWebRequest request, Action<string> callback)
         {
             var requestData = new RequestData(request, callback);
-            requestQueue.Enqueue(requestData);
+            _requestQueue.Enqueue(requestData);
             ProcessNextRequest();
         }
 
         public void CancelLastRequest()
         {
-            if (requestQueue.Count > 0)
+            if (_requestQueue.Count > 0)
             {
-                var lastRequestData = requestQueue.Dequeue();
+                var lastRequestData = _requestQueue.Dequeue();
                 lastRequestData.Request.Abort();
                 Debug.Log("Last request canceled.");
             }
@@ -43,10 +43,10 @@ namespace Logic.Core
 
         private async void ProcessNextRequest()
         {
-            if (currentRequest != null || requestQueue.Count <= 0) return;
+            if (_currentRequest != null || _requestQueue.Count <= 0) return;
             
-            var requestData = requestQueue.Dequeue();
-            currentRequest = requestData.Request;
+            var requestData = _requestQueue.Dequeue();
+            _currentRequest = requestData.Request;
             await ExecuteRequest(requestData);
         }
 
@@ -68,7 +68,7 @@ namespace Logic.Core
 
             requestData.Callback?.Invoke(result);
 
-            currentRequest = null;
+            _currentRequest = null;
             ProcessNextRequest();
         }
     }
