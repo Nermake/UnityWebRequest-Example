@@ -8,7 +8,7 @@ using Zenject;
 
 namespace Logic.Core
 {
-    public class RequestUpdater<TSignal> : IInitializable, IDisposable where TSignal : ISignal
+    public abstract class RequestUpdater<TSignal> : IInitializable, IDisposable where TSignal : ISignal
     {
         private readonly RequestManager _requestManager;
         protected readonly EventBus _eventBus;
@@ -31,14 +31,8 @@ namespace Logic.Core
             _eventBus.Invoke(new StartDataLoadingSignal());
             _requestManager.AddRequest(UnityWebRequest.Get(_url), Callback);
         }
-        
-        protected virtual void Callback(string json)
-        {
-            var weather = JsonUtility.FromJson<WeatherJSON>(json);
-            
-            _eventBus.Invoke(new UpdateWeatherPeriodsSignal(weather.properties.periods.ToArray()));
-            _eventBus.Invoke(new FinishDataLoadingSignal());
-        }
+
+        protected abstract void Callback(string json);
         
         public void Dispose()
         {
