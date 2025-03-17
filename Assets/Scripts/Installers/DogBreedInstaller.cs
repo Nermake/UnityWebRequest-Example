@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Installer
 {
-    public class DogBreedInstaller : MonoInstaller
+    public sealed class DogBreedInstaller : MonoInstaller
     {
         public override void InstallBindings()
         {

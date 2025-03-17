@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Installer
 {
-    public class WeatherInstaller : MonoInstaller
+    public sealed class WeatherInstaller : MonoInstaller
     {
         public override void InstallBindings()
         {
